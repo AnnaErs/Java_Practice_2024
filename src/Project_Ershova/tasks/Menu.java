@@ -1,4 +1,4 @@
-package Practice_5.tasks;
+package Project_Ershova.tasks;
 
 import java.util.Scanner;
 
