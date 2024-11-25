@@ -3,7 +3,7 @@ package Project_Ershova.tasks;
 import java.io.*;
 import java.util.*;
 
-public class JokeProviderTask extends Task {
+public class JokeProviderTask extends AbstractTask {
     private String[] jokes;
     private Random random = new Random();
 
@@ -36,18 +36,4 @@ public class JokeProviderTask extends Task {
             throw new CustomCheckedException("Ошибка чтения файла с шутками: " + filePath);
         }
     }
-
-    @Override
-    public String toString() {
-        return "JokeProviderTask: [шуток в файле = " + jokes.length + "]";
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        JokeProviderTask that = (JokeProviderTask) obj;
-        return Arrays.equals(jokes, that.jokes);
-    }
 }
-

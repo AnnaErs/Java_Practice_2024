@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.Period;
 
-public class DateCalculatorTask extends Task {
+public class DateCalculatorTask extends AbstractTask {
     private Scanner scanner;
 
     public DateCalculatorTask(Scanner scanner) {
@@ -50,15 +50,5 @@ public class DateCalculatorTask extends Task {
     private void printAgeDifference(LocalDate birthDate, LocalDate otherDate) {
         Period period = Period.between(birthDate, otherDate);
         System.out.println("Разница: " + period.getYears() + " лет, " + period.getMonths() + " месяцев, " + period.getDays() + " дней.");
-    }
-
-    @Override
-    public String toString() {
-        return "DateCalculatorTask";
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return this == obj || (obj != null && getClass() == obj.getClass());
     }
 }
