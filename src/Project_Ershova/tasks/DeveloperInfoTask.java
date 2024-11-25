@@ -1,4 +1,4 @@
-package Practice_5.tasks;
+package Project_Ershova.tasks;
 
 public class DeveloperInfoTask extends Task {
     private String info;
