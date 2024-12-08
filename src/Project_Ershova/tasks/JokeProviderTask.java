@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class JokeProviderTask extends AbstractTask {
-    private String[] jokes;
+    private Set<String> jokes; // Используем HashSet для исключения повторений
     private Random random = new Random();
 
     public JokeProviderTask(String filePath) throws CustomCheckedException {
@@ -14,22 +14,23 @@ public class JokeProviderTask extends AbstractTask {
 
     @Override
     public void execute() {
-        if (jokes.length == 0) {
+        if (jokes.isEmpty()) {
             System.out.println("\nНет доступных шуток!");
             return;
         }
-        int index = random.nextInt(jokes.length);
-        System.out.println("\nШутка: " + jokes[index]);
+        int index = random.nextInt(jokes.size());
+        String joke = new ArrayList<>(jokes).get(index); // Преобразуем HashSet в ArrayList для случайного доступа
+        System.out.println("\nШутка: " + joke);
     }
 
-    private String[] loadJokesFromFile(String filePath) throws CustomCheckedException {
+    private Set<String> loadJokesFromFile(String filePath) throws CustomCheckedException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            List<String> jokesList = new ArrayList<>();
+            Set<String> jokesSet = new HashSet<>();
             String line;
             while ((line = reader.readLine()) != null) {
-                jokesList.add(line);
+                jokesSet.add(line.trim());
             }
-            return jokesList.toArray(new String[0]);
+            return jokesSet;
         } catch (FileNotFoundException e) {
             throw new CustomCheckedException("Файл с шутками не найден: " + filePath);
         } catch (IOException e) {

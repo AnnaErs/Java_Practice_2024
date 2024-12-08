@@ -10,16 +10,16 @@ public class DateCalculatorTask extends AbstractTask {
     private Scanner scanner;
 
     public DateCalculatorTask(Scanner scanner) {
-        super("Расчёт возраста");
+        super("Расчёт разницы между двумя датами");
         this.scanner = scanner;
     }
 
     @Override
     public void execute() {
         try {
-            LocalDate birthDate = getDateFromUser("Введите дату вашего рождения (DD.MM.YYYY): ");
-            LocalDate otherDate = getDateFromUser("Введите дату для расчета (DD.MM.YYYY): ");
-            printAgeDifference(birthDate, otherDate);
+            LocalDate firstDate = getDateFromUser("Введите первую дату (DD.MM.YYYY): ");
+            LocalDate otherDate = getDateFromUser("Введите вторую дату (DD.MM.YYYY): ");
+            printAgeDifference(firstDate, otherDate);
         } catch (CustomCheckedException e) {
             System.err.println("Ошибка: " + e.getMessage());
         }
