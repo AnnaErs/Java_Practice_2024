@@ -1,14 +1,15 @@
 package Project_Ershova.tasks;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class Menu {
-    private AbstractTask[] tasks;
+    private List<AbstractTask> tasks;
 
-    public Menu(AbstractTask[] tasks) {
-        this.tasks = tasks.clone();
-        Arrays.sort(this.tasks); // Сортировка задач по имени
+    public Menu(List<AbstractTask> tasks) {
+        this.tasks = new ArrayList<>(tasks);
+        this.tasks.sort((a, b) -> a.getName().compareTo(b.getName())); // Сортировка задач по имени
     }
 
     public void run() {
@@ -20,9 +21,9 @@ public class Menu {
 
             try {
                 int taskIndex = Integer.parseInt(choice) - 1;
-                if (taskIndex >= 0 && taskIndex < tasks.length) {
-                    tasks[taskIndex].execute();
-                } else if (taskIndex == tasks.length) {
+                if (taskIndex >= 0 && taskIndex < tasks.size()) {
+                    tasks.get(taskIndex).execute();
+                } else if (taskIndex == tasks.size()) {
                     exit = true;
                     System.out.println("Выход из программы...");
                 } else {
@@ -37,10 +38,10 @@ public class Menu {
 
     private void printMenu() {
         System.out.println("\nГлавное меню:");
-        for (int i = 0; i < tasks.length; i++) {
-            System.out.println((i + 1) + ". " + tasks[i].getName());
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + ". " + tasks.get(i).getName());
         }
-        System.out.println((tasks.length + 1) + ". Выход из программы");
+        System.out.println((tasks.size() + 1) + ". Выход из программы");
         System.out.print("Выберите опцию: ");
     }
 }
