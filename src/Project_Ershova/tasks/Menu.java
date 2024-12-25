@@ -1,12 +1,14 @@
 package Project_Ershova.tasks;
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Menu {
-    private Task[] tasks;
+    private AbstractTask[] tasks;
 
-    public Menu(Task[] tasks) {
-        this.tasks = tasks;
+    public Menu(AbstractTask[] tasks) {
+        this.tasks = tasks.clone();
+        Arrays.sort(this.tasks); // Сортировка задач по имени
     }
 
     public void run() {
@@ -42,4 +44,3 @@ public class Menu {
         System.out.print("Выберите опцию: ");
     }
 }
-

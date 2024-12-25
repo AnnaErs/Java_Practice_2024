@@ -1,6 +1,6 @@
 package Project_Ershova.tasks;
 
-public class DeveloperInfoTask extends Task {
+public class DeveloperInfoTask extends AbstractTask {
     private String info;
 
     public DeveloperInfoTask(String name, String info) {
@@ -13,4 +13,3 @@ public class DeveloperInfoTask extends Task {
         System.out.println(info);
     }
 }
-
